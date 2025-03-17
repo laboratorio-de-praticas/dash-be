@@ -1,0 +1,27 @@
+# Dependências do Node.js
+/node_modules/
+
+# Arquivos de log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de ambiente
+.env
+
+# Arquivos e pastas do sistema operacional
+.DS_Store          # macOS
+Thumbs.db          # Windows
+
+# Arquivos temporários do editor
+.vscode/           # Visual Studio Code
+.idea/             # JetBrains IDEs
+
+# Arquivos de cache
+npm-cache/
+yarn-cache/
+
+# Diretórios de build (caso você use algum sistema de bundling/transpiling)
+dist/
+build/
