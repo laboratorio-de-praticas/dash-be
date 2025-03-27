@@ -1,0 +1,11 @@
+services: #inicia a definição dos serviços que serão executados dentro dos conteineres
+  backend: #define um serviço chamado backend que executará a aplicação
+    build: . #Indica que a imagem do conteiner será construída a partir do Dockerfile localizado no diretório atual
+    ports:
+      - "${PORT:-5000}:5000" #se a variavel de ambiente PORT estiver definida, ela será usada como a porta do host. Caso contrario, usara o valor padrão 5000.
+    environment:
+      - PORT=5000 #define a variavel de ambiente PORT com o valor 5000
+    volumes:
+      - .:/app #monta o diretório atual no conteiner em /app
+      - /app/node_modules #evita que o node_modules do host sobrescreva o do conteiner
+    restart: unless-stopped
