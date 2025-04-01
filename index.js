@@ -17,19 +17,21 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT;
 
-// Importando Rotas
-app.use("/", DashboardInternaRoutes);
+// Estabelecer Conexão com o banco de dados
+AppDataSource.initialize()
+  .then(async () => {
+    console.log("Banco de dados conectado!");
 
-// Iniciando Serviço na porta definida
-app.listen(PORT, (error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    // Importando Rotas
+    app.use("/", DashboardInternaRoutes);
 
-    // Estabelecer Conexão com o banco de dados    
-    AppDataSource.initialize()
-      .then(async () => console.log("Banco de dados conectado!"))
-      .catch((error) => console.log(error));
-  }
-});
+    // Iniciando Serviço na porta definida
+    app.listen(PORT, (error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(`Servidor rodando na porta ${PORT}`);
+      }
+    });
+  })
+  .catch((error) => console.log(error));
