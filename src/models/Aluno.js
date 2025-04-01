@@ -8,11 +8,7 @@ const Aluno = new EntitySchema({
       primary: true,
       type: "uuid",
       generated: "uuid",
-    },   
-    id_usuario: {
-      type: "uuid",
-      nullable: true,
-    },
+    },       
     id_projeto: {
       type: "uuid",
       nullable: true,
@@ -39,10 +35,12 @@ const Aluno = new EntitySchema({
     },
   },
   relations:{
-    id_usuario: {
-        type: "One-To-One",
+    usuario: {
+        type: "one-to-one",
         target: "Usuario",
-        joinColumn: true,
+        joinColumn: {
+          name: "id_usuario",          
+        },
         nullable: true,
       },
   }

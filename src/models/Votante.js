@@ -8,19 +8,11 @@ const Votante = new EntitySchema({
       primary: true,
       type: "uuid",
       generated: "uuid",
-    },
-    id_aluno: {
-      type: "uuid",      
-      nullable: true,
-    },       
+    },   
     id_visitante: {
       type: "uuid",              
       nullable: true,
-    },
-    id_evento: {
-      type: "uuid",
-      nullable: true,
-    },
+    },    
     situacao_votante: {
       type: "varchar",
       nullable: false,
@@ -30,13 +22,17 @@ const Votante = new EntitySchema({
     id_aluno: {
       type: "many-to-one",
       target: "Aluno",
-      joinColumn: true,
+      joinColumn: {
+        name: "id_aluno",
+      },
       nullable: true,
     },   
     id_evento: {
       type: "many-to-one",
       target: "Evento",
-      joinColumn: true,
+      joinColumn: {
+        name: "id_evento",
+      },
       nullable: true,
     },
   },

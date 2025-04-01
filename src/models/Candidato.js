@@ -8,16 +8,8 @@ const Candidato = new EntitySchema({
       primary: true,
       type: "uuid",
       generated: "uuid",
-    },
-    id_aluno: {
-      type: "uuid",
-      nullable: true,
-    },    
+    },        
     id_projeto: {
-      type: "uuid",
-      nullable: true,
-    },
-    id_evento: {
       type: "uuid",
       nullable: true,
     },
@@ -31,16 +23,20 @@ const Candidato = new EntitySchema({
     },
   },
   relations: {
-    id_aluno: {
-      type: "One-to-one",
+    aluno: {
+      type: "many-to-one",
       target: "Aluno",
-      joinColumn: true,
+      joinColumn: {
+        name: "id_aluno",      
+      },  
       nullable: true,
     },
-    id_evento: {
-      type: "Many-to-one",
+    evento: {
+      type: "many-to-one",
       target: "Evento",
-      joinColumn: true,
+      joinColumn: {
+        name: "id_evento",
+      },
       nullable: true,
     },
   },

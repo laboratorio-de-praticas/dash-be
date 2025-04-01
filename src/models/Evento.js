@@ -1,5 +1,5 @@
 import { EntitySchema } from "typeorm";
-
+import { TipoEvento } from "./enums/TipoEvento.js";
 const Evento = new EntitySchema({
   name: "Evento",
   tableName: "eventos",
@@ -14,7 +14,9 @@ const Evento = new EntitySchema({
       nullable: false,
     },
     tipo_evento: {
-      type: "varchar",
+      type: "enum",
+      enum: TipoEvento,
+      default: TipoEvento.Interno,
       nullable: false,
     },
     data_inicio: {

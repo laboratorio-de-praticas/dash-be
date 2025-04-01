@@ -4,8 +4,8 @@ const repository = AppDataSource.getRepository("Evento");
 class EventoService {
   async findAll() {
     console.log(`Buscando Todos os Eventos...`);
-    try {
-      const eventos = await repository.find();
+      try {
+        const eventos = await repository.find();
       console.log(`Fim da Busca de Eventos...`);
       return eventos;
     } catch (error) {
