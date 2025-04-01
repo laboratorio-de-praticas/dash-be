@@ -15,7 +15,7 @@ class CandidatoService {
     }
   }
 
-  //Função de referência - Podem exisitr erros de sintaxe e lógica - Refatorar assim que necessário
+  //Função de referência - Podem existir erros de sintaxe e lógica - Refatorar assim que necessário
   async getAllCandidatosByAlunoSemestre(cursoSemestre){
     console.log(`Buscando os candidatos da turma [${cursoSemestre}]...`);
     try {

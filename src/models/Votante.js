@@ -13,7 +13,7 @@ const Votante = new EntitySchema({
       type: "uuid",      
       nullable: true,
     },       
-    id_vistante: {
+    id_visitante: {
       type: "uuid",              
       nullable: true,
     },

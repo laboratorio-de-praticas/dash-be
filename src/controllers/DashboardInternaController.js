@@ -5,7 +5,7 @@ class DashBoardInternaController {
   //Buscar todos os eventos
   async findAllEventos(req, res) {
     try {
-      const eventos = await EventoService.findAll;
+      const eventos = await EventoService.findAll();
       res.status(200).json({ eventos });
     } catch (error) {
       res.status(500).json({ message: error.message });
