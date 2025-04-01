@@ -1,25 +1,45 @@
-import { EntitySchema, Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { EntitySchema } from "typeorm";
 
 const Votante = new EntitySchema({
-  name: "votantes", // Will use table name `post` as default behaviour.
+  name: "Votante",
   tableName: "votantes",
   columns: {
-    id:{
+    id: {
       primary: true,
       type: "uuid",
-      generated: true,
+      generated: "uuid",
     },
-    nome: {
-      primary: false,
-      type: "varchar",
-      nullable: true
+    id_aluno: {
+      type: "uuid",      
+      nullable: true,
+    },       
+    id_vistante: {
+      type: "uuid",              
+      nullable: true,
+    },
+    id_evento: {
+      type: "uuid",
+      nullable: true,
     },
     situacao_votante: {
-      primary: false,
       type: "varchar",
-      nullable: true
-    }
-  }
-})
+      nullable: false,
+    },    
+  },
+  relations: {
+    id_aluno: {
+      type: "many-to-one",
+      target: "Aluno",
+      joinColumn: true,
+      nullable: true,
+    },   
+    id_evento: {
+      type: "many-to-one",
+      target: "Evento",
+      joinColumn: true,
+      nullable: true,
+    },
+  },
+});
 
-export default Votante
+export default Votante;

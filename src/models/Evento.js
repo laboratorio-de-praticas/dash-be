@@ -1,34 +1,51 @@
-// import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { EntitySchema } from "typeorm";
 
-// @Entity("eventos")
-// export class Evento{
-//     @PrimaryGeneratedColumn("uuid")
-//     id: String;
+const Evento = new EntitySchema({
+  name: "Evento",
+  tableName: "eventos",
+  columns: {
+    id: {
+      primary: true,
+      type: "uuid",
+      generated: "uuid",
+    },
+    nome: {
+      type: "varchar",
+      nullable: false,
+    },
+    tipo_evento: {
+      type: "varchar",
+      nullable: false,
+    },
+    data_inicio: {
+      type: "timestamp",
+      nullable: false,
+    },
+    data_fim: {
+      type: "timestamp",
+      nullable: false,
+    },
+    descricao: {
+      type: "varchar",
+      nullable: false,
+    },
+    status: {
+      type: "varchar",
+      nullable: false,
+    },
+    data_alteracao: {
+      type: "timestamp",
+      updateDate: true,
+    },
+    data_criacao: {
+      type: "timestamp",
+      createDate: true,
+    },
+    curso_semestre: {
+      type: "varchar",
+      nullable: false,
+    },
+  },
+});
 
-//     @Column()
-//     nome: String;
-
-//     @Column()
-//     tipo_evento: String;
-
-//     @Column()
-//     data_inicio: Date;
-
-//     @Column()
-//     data_fim: Date;
-
-//     @Column()
-//     descricao: String;
-
-//     @Column()
-//     status: String;
-
-//     @UpdateDateColumn()
-//     data_alteracao: Date;
-
-//     @CreateDateColumn()
-//     data_criacao: Date;
-
-//     @Column()
-//     curso_semestre: String;
-// }
+export default Evento;

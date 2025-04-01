@@ -1,28 +1,51 @@
-// import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm"
+import { EntitySchema } from "typeorm";
 
-// @Entity("alunos")
-// export class Aluno {
-//     @PrimaryGeneratedColumn("uuid")
-//     id: String;
+const Aluno = new EntitySchema({
+  name: "Aluno",
+  tableName: "alunos",
+  columns: {
+    id: {
+      primary: true,
+      type: "uuid",
+      generated: "uuid",
+    },   
+    id_usuario: {
+      type: "uuid",
+      nullable: true,
+    },
+    id_projeto: {
+      type: "uuid",
+      nullable: true,
+    },
+    foto_url: {
+      type: "varchar",
+      nullable: false,
+    },
+    data_criacao: {
+      type: "timestamp",
+      createDate: true,
+    },
+    data_alteracao: {
+      type: "timestamp",
+      updateDate: true,
+    },
+    data_ingresso: {
+      type: "timestamp",
+      nullable: false,
+    },
+    curso_semestre: {
+      type: "varchar",
+      nullable: false,
+    },
+  },
+  relations:{
+    id_usuario: {
+        type: "One-To-One",
+        target: "Usuario",
+        joinColumn: true,
+        nullable: true,
+      },
+  }
+});
 
-//     @Column({ nullable: true })
-//     id_usuario: String;
-
-//     @Column({ nullable: true })
-//     id_projeto: String;
-
-//     @Column()
-//     foto_url: String;
-
-//     @CreateDateColumn()
-//     data_criacao: Date;
-
-//     @UpdateDateColumn()
-//     data_alteracao: Date;
-
-//     @Column()
-//     data_ingresso: Date;
-
-//     @Column()
-//     curso_semestre: String;
-// }
+export default Aluno;
