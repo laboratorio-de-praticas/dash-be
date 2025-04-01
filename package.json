@@ -1,18 +1,17 @@
 {
-  "name": "dash-be",
-  "version": "1.0.0",
-  "description": "Backend para dashboards relacionados as votacoes",
-  "main": "index.js",
-  "scripts": {
-    "start": "npx nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Fatec Registro",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "nodemon": "^3.1.9"
-  }
+   "name": "dash-be-develop",
+   "version": "0.0.1",
+   "description": "Backend para dashboards relacionados as votacoes",
+   "type": "module",
+   "dependencies": {
+      "dotenv": "^16.4.7",
+      "express": "^4.21.2",
+      "pg": "^8.4.0",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.21"
+   },
+   "scripts": {
+      "start": "npx nodemon index.js",
+      "typeorm": "typeorm-ts-node-commonjs"
+   }
 }
