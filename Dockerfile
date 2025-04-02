@@ -12,11 +12,8 @@ RUN npm install
 # Copia todo o restante dos arquivos para dentro do container
 COPY . .
 
-# Define a variável de ambiente PORT com valor padrão 5000
-ENV PORT=5000
-
 # Expõe a porta definida pela variável de ambiente
-EXPOSE ${PORT}
+EXPOSE 5000
 
 # Comando para iniciar a aplicação
 CMD ["npm", "start"]
