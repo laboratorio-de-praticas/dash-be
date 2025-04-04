@@ -1,4 +1,5 @@
 import { EntitySchema } from "typeorm";
+import CandidatoSituacao from "./enums/CandidatoSituacao.js";
 
 const Candidato = new EntitySchema({
   name: "Candidato",
@@ -26,7 +27,8 @@ const Candidato = new EntitySchema({
       nullable: true,
     },
     situacao_candidato: {
-      type: "varchar",
+      type: "enum",
+      enum: CandidatoSituacao,
       nullable: false,
     },
     data_criacao: {
