@@ -1,7 +1,6 @@
 import { AppDataSource } from "./src/config/data-source.js";
 import express from "express";
 import dotenv from "dotenv";
-import Votante from "./src/models/Votante.js";
 import DashboardInternaRoutes from "./src/routes/DashBoardInternaRoutes.js";
 /* Variáveis de Ambiente */
 dotenv.config();
