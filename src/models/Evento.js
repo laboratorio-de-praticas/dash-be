@@ -1,51 +1,49 @@
 import { EntitySchema } from "typeorm";
-import { TipoEvento } from "./enums/TipoEvento.js";
+
 const Evento = new EntitySchema({
   name: "Evento",
-  tableName: "eventos",
+  tableName: "Evento",
   columns: {
-    id: {
+    id_evento: {
       primary: true,
-      type: "uuid",
-      generated: "uuid",
+      type: "int",
+      generated: "increment",
     },
-    nome: {
+    tipo_evento: {
       type: "varchar",
       nullable: false,
     },
-    tipo_evento: {
-      type: "enum",
-      enum: TipoEvento,
-      default: TipoEvento.Interno,
+    nome_evento: {
+      type: "text",
+      nullable: true,
+    },
+    descricao_evento: {
+      type: "text",
+      nullable: true,
+    },
+    status_evento: {
+      type: "varchar",
       nullable: false,
+    },
+    curso_semestre: {
+      type: "text",
+      nullable: true,
     },
     data_inicio: {
       type: "timestamp",
-      nullable: false,
+      nullable: true,
     },
     data_fim: {
       type: "timestamp",
-      nullable: false,
+      nullable: true,
     },
-    descricao: {
-      type: "varchar",
-      nullable: false,
-    },
-    status: {
-      type: "varchar",
-      nullable: false,
+    data_criacao: {
+      type: "timestamp", 
+      default: () => "CURRENT_TIMESTAMP",
     },
     data_alteracao: {
       type: "timestamp",
-      updateDate: true,
-    },
-    data_criacao: {
-      type: "timestamp",
-      createDate: true,
-    },
-    curso_semestre: {
-      type: "varchar",
-      nullable: false,
+      default: () => "CURRENT_TIMESTAMP",
     },
   },
 });

@@ -1,36 +1,24 @@
 import { EntitySchema } from "typeorm";
 
-const Candidato = new EntitySchema({
-  name: "Candidato",
-  tableName: "Candidato",
+const CategoriasProjeto = new EntitySchema({
+  name: "CategoriasProjeto",
+  tableName: "CategoriasProjeto",
   columns: {
     id: {
       primary: true,
       type: "int",
       generated: "increment",
     },
-    id_aluno: {
+    fk_id_projeto: {
       type: "int",
       nullable: false,
     },
-    id_projeto: {
+    fk_id_categoria: {
       type: "int",
-      nullable: false,
-    },
-    id_evento: {
-      type: "int",
-      nullable: false,
-    },
-    qrcode: {
-      type: "text",
-      nullable: true,
-    },
-    situacao_candidato: {
-      type: "varchar",
       nullable: false,
     },
     data_criacao: {
-      type: "timestamp", 
+      type: "timestamp",
       default: () => "CURRENT_TIMESTAMP",
     },
     data_alteracao: {
@@ -40,4 +28,4 @@ const Candidato = new EntitySchema({
   },
 });
 
-export default Candidato;
+export default CategoriasProjeto;

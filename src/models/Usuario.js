@@ -1,41 +1,44 @@
 import { EntitySchema } from "typeorm";
-
+import UsuarioStatus from "./enums/UsuarioStatus.js";
+import UsuarioTipos from "./enums/UsuarioTipos.js";
 const Usuario = new EntitySchema({
   name: "Usuario",
-  tableName: "usuarios",
+  tableName: "Usuario",
   columns: {
     id: {
       primary: true,
-      type: "uuid",
-      generated: "uuid",
+      type: "int",
+      generated: "increment",
     },
     nome: {
-      type: "varchar",
+      type: "text",
       nullable: false,
     },
     senha: {
-      type: "varchar",
+      type: "text",
       nullable: false,
     },
     email_institucional: {
-      type: "varchar",
+      type: "text",
       nullable: false,
     },
     tipo_usuario: {
-      type: "varchar",
+      type: "enum",
+      enum: UsuarioTipos,
       nullable: false,
+    },
+    status_usuario: {
+      type: "enum",
+      enum: UsuarioStatus,
+      nullable: false,      
     },
     data_criacao: {
       type: "timestamp",
-      createDate: true,
+      default: () => "CURRENT_TIMESTAMP", // Usando o valor default como no SQL
     },
     data_alteracao: {
       type: "timestamp",
-      updateDate: true,
-    },
-    status_usuario: {
-      type: "varchar",
-      nullable: false,
+      default: () => "CURRENT_TIMESTAMP", // Definido com CURRENT_TIMESTAMP como no SQL
     },
   },
 });
