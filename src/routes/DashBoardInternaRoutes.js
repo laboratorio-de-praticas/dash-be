@@ -2,9 +2,12 @@ import DashBoardInternaController from "../controllers/DashboardInternaControlle
 import express from "express";
 const router = express.Router();
 
-//Rota Temporário - Exemplo I
-router.get("/v1/dashboard/interna", DashBoardInternaController.findDashboardInternoGeral);
+// Rota para buscar todos os dados para dashbord de eventos Internos Ativos - Inclui candidatos e votos
+router.get("/v1/dashboard/interno", DashBoardInternaController.findDashboardInternoGeral);
+router.get("/v1/dashboard/interno/:curso", DashBoardInternaController.findDashboardInternoByCurso);
+
 export default router;
+
 
 
 
