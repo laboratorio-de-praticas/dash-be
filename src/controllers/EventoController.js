@@ -16,6 +16,7 @@ class EventoController {
   async findAllByTipoEventoAndStatus(req, res) {
     try {
       const { tipoEvento, statusEvento } = req.params;
+      console.log(statusEvento);
       // Verifica se o parâmetro de tipoEvento é válido
       if (!Object.values(EventoTipos).includes(tipoEvento)) {
         return res
@@ -24,7 +25,7 @@ class EventoController {
       }
       // Verifica se o parâmetro de statusEvento é válido caso esteja presente
       if (
-        (statusEvento !== undefined || statusEvento !== null  ) &&
+        (statusEvento !== undefined) &&
         !Object.values(EventoStatus).includes(statusEvento)
       ) {
         return res
