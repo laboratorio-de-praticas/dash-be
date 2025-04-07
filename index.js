@@ -1,7 +1,9 @@
 import { AppDataSource } from "./src/config/data-source.js";
 import express from "express";
 import dotenv from "dotenv";
+//Routes
 import DashboardInternaRoutes from "./src/routes/DashBoardInternaRoutes.js";
+import EventoRoutes from "./src/routes/EventoRoutes.js";
 /* Variáveis de Ambiente */
 dotenv.config();
 
@@ -23,6 +25,7 @@ AppDataSource.initialize()
 
     // Importando Rotas
     app.use("/", DashboardInternaRoutes);
+    app.use("/", EventoRoutes);
 
     // Iniciando Serviço na porta definida
     app.listen(PORT, (error) => {
