@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import Votante from "./src/models/Votante.js";
 import DashboardInternaRoutes from "./src/routes/DashBoardInternaRoutes.js";
+import DashboardExternaRoutes from "./src/routes/DashBoardExternaRoutes.js";
 /* Variáveis de Ambiente */
 dotenv.config();
 
@@ -24,6 +25,7 @@ AppDataSource.initialize()
 
     // Importando Rotas
     app.use("/", DashboardInternaRoutes);
+    app.use("/", DashboardExternaRoutes);
 
     // Iniciando Serviço na porta definida
     app.listen(PORT, (error) => {

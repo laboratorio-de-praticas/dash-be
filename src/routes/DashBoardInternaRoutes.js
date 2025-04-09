@@ -1,10 +1,13 @@
-import DashBoardInternaController from "../controllers/DashBoardInternaController.js";
+import DashBoardInternaController from "../controllers/DashboardInternaController.js";
 import express from "express";
-const router = express.Router();
+const routerInterna = express.Router();
 
 //Rota Temporário - Exemplo I
-router.get("/eventos", DashBoardInternaController.findAllEventos);
-export default router;
+routerInterna.get("/eventos", DashBoardInternaController.findAllEventos);
+
+// Rota para recebendo de dados do webhooks para representantes
+routerInterna.post("/votacao_representantes", DashBoardInternaController.representantesWebHook);
+export default routerInterna;
 
 
 
