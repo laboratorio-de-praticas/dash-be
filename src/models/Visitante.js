@@ -9,22 +9,26 @@ const Visitante = new EntitySchema({
       type: "int",
       generated: "increment",
     },
-    nome_social: {
+    nome: {
       type: "text",
       nullable: true,
     },
-    celular: {
+    telefone: {
       type: "text",
-      nullable: true,
-    },
-    data_nascimento: {
-      type: "timestamp",
       nullable: true,
     },
     chave_acesso: {
       type: "char",
       length: 4,
       nullable: true,
+    },
+    data_criacao: {
+      type: "timestamp",
+      default: () => "CURRENT_TIMESTAMP",
+    },
+    data_alteracao: {
+      type: "timestamp",
+      default: () => "CURRENT_TIMESTAMP",
     },
   },
 });

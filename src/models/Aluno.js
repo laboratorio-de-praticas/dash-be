@@ -2,7 +2,7 @@ import { EntitySchema } from "typeorm";
 
 const Aluno = new EntitySchema({
   name: "Aluno",
-  tableName: "Aluno",
+  tableName: "Alunos",
   columns: {
     id_aluno: {
       primary: true,
@@ -13,7 +13,7 @@ const Aluno = new EntitySchema({
       type: "text",
       nullable: true,
     },
-    data_ingresso: {
+    data_matricula: {
       type: "timestamp",
       nullable: true,
     },
