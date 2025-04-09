@@ -1,51 +1,52 @@
 import { EntitySchema } from "typeorm";
-import { TipoEvento } from "./enums/TipoEvento.js";
+import EventoStatus from "./enums/EventoStatus.js";
+import EventoTipos from "./enums/EventoTipos.js";
 const Evento = new EntitySchema({
   name: "Evento",
-  tableName: "eventos",
+  tableName: "Evento",
   columns: {
-    id: {
+    id_evento: {
       primary: true,
-      type: "uuid",
-      generated: "uuid",
-    },
-    nome: {
-      type: "varchar",
-      nullable: false,
+      type: "int",
+      generated: "increment",
     },
     tipo_evento: {
       type: "enum",
-      enum: TipoEvento,
-      default: TipoEvento.Interno,
+      enum: EventoTipos,
       nullable: false,
+    },
+    nome_evento: {
+      type: "text",
+      nullable: true,
+    },
+    descricao_evento: {
+      type: "text",
+      nullable: true,
+    },
+    status_evento: {
+      type: "enum",
+      enum: EventoStatus,
+      nullable: false,
+    },
+    curso_semestre: {
+      type: "text",
+      nullable: true,
     },
     data_inicio: {
       type: "timestamp",
-      nullable: false,
+      nullable: true,
     },
     data_fim: {
       type: "timestamp",
-      nullable: false,
+      nullable: true,
     },
-    descricao: {
-      type: "varchar",
-      nullable: false,
-    },
-    status: {
-      type: "varchar",
-      nullable: false,
+    data_criacao: {
+      type: "timestamp", 
+      default: () => "CURRENT_TIMESTAMP",
     },
     data_alteracao: {
       type: "timestamp",
-      updateDate: true,
-    },
-    data_criacao: {
-      type: "timestamp",
-      createDate: true,
-    },
-    curso_semestre: {
-      type: "varchar",
-      nullable: false,
+      default: () => "CURRENT_TIMESTAMP",
     },
   },
 });
