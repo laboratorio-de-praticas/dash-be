@@ -2,48 +2,38 @@ import { EntitySchema } from "typeorm";
 
 const Aluno = new EntitySchema({
   name: "Aluno",
-  tableName: "alunos",
+  tableName: "Aluno",
   columns: {
-    id: {
+    id_aluno: {
       primary: true,
-      type: "uuid",
-      generated: "uuid",
-    },       
-    id_projeto: {
-      type: "uuid",
-      nullable: true,
+      type: "int",
+      generated: "increment",
     },
     foto_url: {
-      type: "varchar",
-      nullable: false,
-    },
-    data_criacao: {
-      type: "timestamp",
-      createDate: true,
-    },
-    data_alteracao: {
-      type: "timestamp",
-      updateDate: true,
+      type: "text",
+      nullable: true,
     },
     data_ingresso: {
       type: "timestamp",
-      nullable: false,
+      nullable: true,
+    },
+    data_criacao: {
+      type: "timestamp", 
+      default: () => "CURRENT_TIMESTAMP",
+    },
+    data_alteracao: {
+      type: "timestamp",
+      default: () => "CURRENT_TIMESTAMP", 
     },
     curso_semestre: {
-      type: "varchar",
+      type: "text",
+      nullable: true,
+    },
+    fk_id_usuario: {
+      type: "int",
       nullable: false,
     },
   },
-  relations:{
-    usuario: {
-        type: "one-to-one",
-        target: "Usuario",
-        joinColumn: {
-          name: "id_usuario",          
-        },
-        nullable: true,
-      },
-  }
 });
 
 export default Aluno;
