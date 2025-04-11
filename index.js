@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 //Routes
 import DashboardInternaRoutes from "./src/routes/DashBoardInternaRoutes.js";
 import DashboardExternaRoutes from "./src/routes/DashBoardExternaRoutes.js";
+import ListenerRoutes from "./src/routes/ListenerRoutes.js"; 
 /* Variáveis de Ambiente */
 dotenv.config();
 
@@ -26,6 +27,7 @@ AppDataSource.initialize()
     // Importando Rotas
     app.use("/", DashboardInternaRoutes);
     app.use("/", DashboardExternaRoutes);
+    app.use("/", ListenerRoutes);
 
     // Iniciando Serviço na porta definida
     app.listen(PORT, (error) => {

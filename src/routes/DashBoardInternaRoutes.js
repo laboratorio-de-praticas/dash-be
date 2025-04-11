@@ -6,9 +6,6 @@ const routerInterna = express.Router();
 routerInterna.get("/v1/dashboard/interno", DashBoardInternaController.findDashboardInternoGeral);
 routerInterna.get("/v1/dashboard/interno/:curso", DashBoardInternaController.findDashboardInternoByCurso);
 
-
-// Rota para recebendo de dados do webhooks para representantes
-routerInterna.post("/votacao_representantes", DashBoardInternaController.representantesWebHook);
 export default routerInterna;
 
 
