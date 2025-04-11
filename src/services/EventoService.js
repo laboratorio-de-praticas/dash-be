@@ -2,15 +2,10 @@ import { AppDataSource } from "../config/data-source.js";
 const repository = AppDataSource.getRepository("Evento");
 
 class EventoService {
-  constructor() {
-    this.listenerClient = null;
-    this.initListenerNewVotes();
-  }
-
   async findAll() {
     console.log(`Buscando Todos os Eventos...`);
-      try {
-        const eventos = await repository.find();
+    try {
+      const eventos = await repository.find();
       console.log(`Fim da Busca de Eventos...`);
       return eventos;
     } catch (error) {
@@ -19,90 +14,32 @@ class EventoService {
     }
   }
 
-  // Funções para webhook
-  async sendWebhook (url, data) {
+  async findAllByTipoEvento(tipoEvento) {
+    console.log(`Buscando Todos Eventos do Tipo: ${tipoEvento}`);
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+      const eventos = await repository.find({
+        where: { tipo_evento: tipoEvento },
       });
-      
-      console.log("Dados de novo voto enviado com sucesso!");
-
-      return await response.json(); 
+      console.log(`Fim da Busca de   do Tipo: ${tipoEvento}`);
+      return eventos;
     } catch (error) {
-      console.error('Erro ao enviar dados para o Webhook:', error.message);
+      console.log(`Erro ao buscar Eventos do Tipo: ${tipoEvento}: ${error}`);
+      throw error;
     }
   }
 
-  async initListenerNewVotes() {
-    const urls = {
-      Externo: "http://localhost:4000/votacao_projetos",
-      Interno: "http://localhost:4000/votacao_representantes",
-    };
-
+  async findAllByTipoEventoAndStatus(tipoEvento, statusEvento) {
+    console.log(`Buscando Todos Eventos do Tipo: ${tipoEvento}`);
     try {
-      const driver = AppDataSource.driver;
-      const pgClient = driver.postgres.Client;
-
-      // Cria um novo client para receber os dados do trigger
-      this.listenerClient = new pgClient({
-        host: AppDataSource.options.host,
-        port: AppDataSource.options.port,
-        user: AppDataSource.options.username,
-        password: AppDataSource.options.password,
-        database: AppDataSource.options.database
+      const eventos = await repository.find({
+        where: { tipo_evento: tipoEvento, status_evento: statusEvento },
       });
-      
-      await this.listenerClient.connect();
-      await this.listenerClient.query("LISTEN new_vote");
-      console.log("Escutando votos...");
-
-      this.listenerClient.on('notification', async (msg) => {
-        try {
-          const payload = JSON.parse(msg.payload);
-
-          if (!payload.tipoevento) {
-            console.log('Tipo de evento não especificado');
-            return;
-          }
-
-          const url = urls[payload.tipoevento];
-          if (!url) {
-            console.log('Evento desconhecido:', payload.tipoevento);
-            return;
-          }
-
-          await this.sendWebhook(url, payload);
-          
-        } catch (error) {
-          console.error("Erro no processamento:", error.message);
-        }
-      });
-
-      this.listenerClient.on('error', (err) => {
-        console.error('Erro na conexão:', err.message);
-        this.reconnectListener();
-      });
-
+      console.log(`Fim da Busca de   do Tipo: ${tipoEvento}`);
+      return eventos;
     } catch (error) {
-      console.error('Erro ao iniciar listener:', error.message);
-      setTimeout(() => this.initListenerNewVotes(), 5000);
+      console.log(`Erro ao buscar Eventos do Tipo: ${tipoEvento}: ${error}`);
+      throw error;
     }
-  } 
-
-  async reconnectListener() {
-    if (this.listenerClient) {
-      try {
-        await this.listenerClient.end();
-      } catch (e) {
-        console.error('Erro ao encerrar conexão:', e.message);
-      }
-    }
-    setTimeout(() => this.initListenerNewVotes(), 5000); // A função tenta iniciar o listener novamente em caso de erro
   }
 }
 
