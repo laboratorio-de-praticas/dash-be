@@ -96,10 +96,10 @@ DB_NAME=postgresbd
 DB_PORT=5432
 ```
 Onde as variaveis significam:
-> DB_USERNAME -> Nome de usuário par acesso ao banco <br>
+> DB_USERNAME -> Nome de usuário para acesso ao banco <br>
 > DB_PASSWORD -> Senha para acesso ao banco <br>
 > DB_NAME -> Nome do banco a ser utilizado <br>
->DB_HOST -> Host do servidor onde o banco está localhost é utilziado localmente
+> DB_HOST -> Host do servidor onde o banco está. Se usado localmente basta inserir "localhost"
 
 ### ✅ Instalação e Execução
 
