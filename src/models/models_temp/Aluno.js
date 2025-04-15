@@ -17,6 +17,18 @@ const Aluno = new EntitySchema({
       type: "timestamp",
       nullable: true,
     },
+    deseja_ser_candidato: {
+      type: "boolean",
+      default: false
+    },
+    curso_semestre: {
+      type: "text",
+      nullable: true,
+    },
+    ra: {
+      type: "int",
+      unique: true
+    },
     data_criacao: {
       type: "timestamp", 
       default: () => "CURRENT_TIMESTAMP",
@@ -25,10 +37,7 @@ const Aluno = new EntitySchema({
       type: "timestamp",
       default: () => "CURRENT_TIMESTAMP", 
     },
-    curso_semestre: {
-      type: "text",
-      nullable: true,
-    },
+    
     fk_id_usuario: {
       type: "int",
       nullable: false,

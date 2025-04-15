@@ -6,7 +6,7 @@ const Projeto = new EntitySchema({
   columns: {
     id_projeto: {
       primary: true,
-      type: "int", 
+      type: "int",
       generated: "increment",
     },
     titulo: {
@@ -16,6 +16,26 @@ const Projeto = new EntitySchema({
     descricao: {
       type: "text",
       nullable: false, // Coluna obrigatória
+    },
+    foto_url: {
+      type: "text",
+      nullable: true,
+    },
+    trl: {
+      type: "int",
+      nullable: false, // Coluna obrigatória
+    },
+    cea: {
+      type: "int",
+      nullable: false, // Coluna obrigatória
+    },
+    turma: {
+      type: "text",
+      nullable: false, // Coluna obrigatória
+    },
+    ativo: {
+      type: "boolean",
+      default: true,
     },
     data_criacao: {
       type: "timestamp",

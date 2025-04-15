@@ -18,6 +18,10 @@ const Usuario = new EntitySchema({
       type: "text",
       nullable: false,
     },
+    telefone: {
+      type: "text",
+      nullable: true,
+    },
     email_institucional: {
       type: "text",
       nullable: false,
