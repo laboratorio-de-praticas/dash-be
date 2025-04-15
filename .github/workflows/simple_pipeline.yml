@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  eslint:
+  eslint-check:
     runs-on: ubuntu-latest
     continue-on-error: true # ⚠️ Não falha o PR se o ESLint tiver erro
     steps:
@@ -25,30 +25,24 @@ jobs:
       - name: Run ESLint
         run: npx eslint . || true # Ignora os erros para não travar o PR
 
-  run-app:
+  build-check:
     runs-on: ubuntu-latest
-    needs: eslint
+    needs: eslint-check
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  
 
-      - name: Create .env file
-        run: |
-          echo "PORT=5000" >> .env
-          echo "DB_HOST=localhost" >> .env
-          echo "DB_PORT=5432" >> .env
-          echo "DB_USERNAME=pipeline" >> .env
-          echo "DB_PASSWORD=pipeline" >> .env
-          echo "DB_NAME=bdname" >> .env
-
-      - name: Set up Docker and run app
-        run: docker-compose up --build -d
-
-      - name: Wait for containers to be ready
-        run: sleep 60
-
-      - name: Show logs from backend
-        run: docker-compose logs backend
-
-      - name: Stop containers
-        run: docker-compose down -v
+      - name: Run Docker Compose
+        uses: adambirds/docker-compose-action@v1.5.0
+        with:
+          compose-file: "./docker-compose.yml"
+          up-flags: "--build"
+          down-flags: "--volumes"
+          test-container: "backend"   
+        env:
+          PORT: 5000
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USERNAME: pipeline
+          DB_PASSWORD: pipeline
+          DB_NAME: test
