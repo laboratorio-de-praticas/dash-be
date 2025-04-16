@@ -7,7 +7,7 @@ const CategoriasProjetos = new EntitySchema({
     id: {
       type: "int",
       primary: true,
-      generated: true,
+      generated: "increment",
     },
     data_criacao: {
       type: "timestamp",

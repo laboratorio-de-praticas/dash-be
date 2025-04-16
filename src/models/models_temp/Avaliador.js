@@ -7,7 +7,7 @@ const Avaliador = new EntitySchema({
     id_avaliador: {
       type: "int",
       primary: true,
-      generated: true,
+      generated: "increment",
     },
     nome: {
       type: "text",

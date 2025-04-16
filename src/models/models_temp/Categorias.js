@@ -7,7 +7,7 @@ const Categoriaa = new EntitySchema({
     id_categoria: {
       type: "int",
       primary: true,
-      generated: true,
+      generated: "increment",
     },
     nome: {
       type: "text",

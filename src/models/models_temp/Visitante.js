@@ -7,7 +7,7 @@ const Visitante = new EntitySchema({
     id_visitante: {
       type: "int",
       primary: true,
-      generated: true,
+      generated: "increment",
     },
     nome: {
       type: "text",

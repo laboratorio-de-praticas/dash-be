@@ -6,7 +6,7 @@ const Ods = new EntitySchema({
     id_ods: {
       type: "int",
       primary: true,
-      generated: true,
+      generated: "increment",
     },
     descricao: {
       type: "text",
