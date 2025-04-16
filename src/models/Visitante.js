@@ -1,28 +1,28 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Visitante = new EntitySchema({
-  name: "Visitante",
-  tableName: "Visitante",
+  name: 'Visitante',
+  tableName: 'Visitante',
   columns: {
     id_visitante: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     nome_social: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     celular: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     data_nascimento: {
-      type: "timestamp",
+      type: 'timestamp',
       nullable: true,
     },
     chave_acesso: {
-      type: "char",
+      type: 'char',
       length: 4,
       nullable: true,
     },

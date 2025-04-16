@@ -1,5 +1,5 @@
-import { AppDataSource } from "../config/data-source.js";
-const repository = AppDataSource.getRepository("Aluno");
+import {AppDataSource} from '../config/data-source.js';
+const repository = AppDataSource.getRepository('Aluno');
 
 class AlunoService {
   async findAll() {

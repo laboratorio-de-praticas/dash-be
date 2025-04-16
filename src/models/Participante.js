@@ -1,28 +1,28 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Participante = new EntitySchema({
-  name: "Participante",
-  tableName: "Participante",
+  name: 'Participante',
+  tableName: 'Participante',
   columns: {
     id_participante: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     id_aluno: {
-      type: "int",
+      type: 'int',
       nullable: true,
     },
     id_visitante: {
-      type: "int",
+      type: 'int',
       nullable: true,
     },
     id_evento: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     avaliador: {
-      type: "boolean",
+      type: 'boolean',
       default: false,
     },
   },

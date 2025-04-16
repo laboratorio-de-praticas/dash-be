@@ -1,5 +1,5 @@
-import { AppDataSource } from "../config/data-source.js";
-const repository = AppDataSource.getRepository("Evento");
+import {AppDataSource} from '../config/data-source.js';
+const repository = AppDataSource.getRepository('Evento');
 
 class EventoService {
   async findAll() {
@@ -18,7 +18,7 @@ class EventoService {
     console.log(`Buscando Todos Eventos do Tipo: ${tipoEvento}`);
     try {
       const eventos = await repository.find({
-        where: { tipo_evento: tipoEvento },
+        where: {tipo_evento: tipoEvento},
       });
       console.log(`Fim da Busca de   do Tipo: ${tipoEvento}`);
       return eventos;
@@ -32,7 +32,7 @@ class EventoService {
     console.log(`Buscando Todos Eventos do Tipo: ${tipoEvento}`);
     try {
       const eventos = await repository.find({
-        where: { tipo_evento: tipoEvento, status_evento: statusEvento },
+        where: {tipo_evento: tipoEvento, status_evento: statusEvento},
       });
       console.log(`Fim da Busca de   do Tipo: ${tipoEvento}`);
       return eventos;

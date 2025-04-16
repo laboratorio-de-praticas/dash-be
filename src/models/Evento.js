@@ -1,52 +1,52 @@
-import { EntitySchema } from "typeorm";
-import EventoStatus from "./enums/EventoStatus.js";
-import EventoTipos from "./enums/EventoTipos.js";
+import {EntitySchema} from 'typeorm';
+import EventoStatus from './enums/EventoStatus.js';
+import EventoTipos from './enums/EventoTipos.js';
 const Evento = new EntitySchema({
-  name: "Evento",
-  tableName: "Evento",
+  name: 'Evento',
+  tableName: 'Evento',
   columns: {
     id_evento: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     tipo_evento: {
-      type: "enum",
+      type: 'enum',
       enum: EventoTipos,
       nullable: false,
     },
     nome_evento: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     descricao_evento: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     status_evento: {
-      type: "enum",
+      type: 'enum',
       enum: EventoStatus,
       nullable: false,
     },
     curso_semestre: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     data_inicio: {
-      type: "timestamp",
+      type: 'timestamp',
       nullable: true,
     },
     data_fim: {
-      type: "timestamp",
+      type: 'timestamp',
       nullable: true,
     },
     data_criacao: {
-      type: "timestamp", 
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
 });

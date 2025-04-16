@@ -1,43 +1,43 @@
-import { EntitySchema } from "typeorm";
-import CandidatoSituacao from "./enums/CandidatoSituacao.js";
+import {EntitySchema} from 'typeorm';
+import CandidatoSituacao from './enums/CandidatoSituacao.js';
 
 const Candidato = new EntitySchema({
-  name: "Candidato",
-  tableName: "Candidato",
+  name: 'Candidato',
+  tableName: 'Candidato',
   columns: {
     id: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     id_aluno: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     id_projeto: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     id_evento: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     qrcode: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     situacao_candidato: {
-      type: "enum",
+      type: 'enum',
       enum: CandidatoSituacao,
       nullable: false,
     },
     data_criacao: {
-      type: "timestamp", 
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
 });
