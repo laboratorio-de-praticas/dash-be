@@ -1,21 +1,21 @@
-import { EntitySchema } from "typeorm";
+import { EntitySchema, Exclusion } from "typeorm";
 
 const Visitante = new EntitySchema({
   name: "Visitante",
-  tableName: "Visitante",
+  tableName: "Visitantes",
   columns: {
     id_visitante: {
-      primary: true,
       type: "int",
+      primary: true,
       generated: "increment",
     },
     nome: {
       type: "text",
-      nullable: true,
+      nullable: false,
     },
     telefone: {
       type: "text",
-      nullable: true,
+      nullable: false,
     },
     chave_acesso: {
       type: "char",
@@ -32,5 +32,4 @@ const Visitante = new EntitySchema({
     },
   },
 });
-
 export default Visitante;

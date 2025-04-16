@@ -1,24 +1,24 @@
 import { EntitySchema } from "typeorm";
-import CandidatoSituacao from "./enums/CandidatoSituacao.js";
-
-const Candidato = new EntitySchema({
-  name: "Candidato",
-  tableName: "Candidato",
+import RepresentanteSituacao from "./enums/RepresentanteSituacao";
+const Representante = new EntitySchema({
+  name: "Representante",
+  tableName: "Representantes",
   columns: {
-    id: {
-      primary: true,
+    id_representante: {
       type: "int",
+      primary: true,
       generated: "increment",
     },
-    id_aluno: {
+    descricao_campanha: {
+      type: "text",
+      nullable: true,
+    },
+    fk_id_aluno: {
       type: "int",
       nullable: false,
+      unique: true,
     },
-    id_projeto: {
-      type: "int",
-      nullable: false,
-    },
-    id_evento: {
+    fk_id_evento: {
       type: "int",
       nullable: false,
     },
@@ -26,9 +26,9 @@ const Candidato = new EntitySchema({
       type: "text",
       nullable: true,
     },
-    situacao_candidato: {
+    RepresentanteSituacao: {
       type: "enum",
-      enum: CandidatoSituacao,
+      enum: RepresentanteSituacao,
       nullable: false,
     },
     data_criacao: {
@@ -36,10 +36,9 @@ const Candidato = new EntitySchema({
       default: () => "CURRENT_TIMESTAMP",
     },
     data_alteracao: {
-      type: "timestamp",
+      type: "timestamp", 
       default: () => "CURRENT_TIMESTAMP",
     },
   },
 });
-
-export default Candidato;
+export default Representante;
