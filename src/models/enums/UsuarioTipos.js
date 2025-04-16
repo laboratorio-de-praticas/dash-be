@@ -1,6 +1,6 @@
 const UsuarioTipos = {
-  Admin: "Admin",
-  Atendente: "Atendente",
+  Admin: 'Admin',
+  Atendente: 'Atendente',
 };
 
 export default UsuarioTipos;

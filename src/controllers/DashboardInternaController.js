@@ -1,4 +1,4 @@
-import DashboardInternasService from "../services/DashboardInternaService.js";
+import DashboardInternasService from '../services/DashboardInternaService.js';
 class DashBoardInternaController {
   // Serve a rota /v1/dashboard/interna
   async findDashboardInternoGeral(req, res) {
@@ -8,7 +8,7 @@ class DashBoardInternaController {
 
       return res.status(200).json(dashboardInternoGeralDados);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return res.status(500).json({message: error.message});
     }
   }
 
@@ -18,8 +18,10 @@ class DashBoardInternaController {
       const curso = req.params.curso; // Obtém o parâmetro de curso da URL
 
       // Valida o parâmetro de curso
-      if (!curso || curso.trim() === "") {
-        return res.status(400).json({ message: "Curso não fornecido corretamente!" });
+      if (!curso || curso.trim() === '') {
+        return res
+          .status(400)
+          .json({message: 'Curso não fornecido corretamente!'});
       }
 
       // Chama o serviço para buscar os dados do dashboard interno ativo por curso
@@ -28,7 +30,7 @@ class DashBoardInternaController {
 
       return res.status(200).json(dashboardInternoGeralDados);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return res.status(500).json({message: error.message});
     }
   }
 }

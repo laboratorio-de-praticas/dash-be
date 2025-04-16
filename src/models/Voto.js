@@ -1,24 +1,24 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Voto = new EntitySchema({
-  name: "Voto",
-  tableName: "Voto",
+  name: 'Voto',
+  tableName: 'Voto',
   columns: {
     id_voto: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     id_candidato: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     id_participante: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     id_evento: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
   },

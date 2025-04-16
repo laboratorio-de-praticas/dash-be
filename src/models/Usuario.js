@@ -1,44 +1,44 @@
-import { EntitySchema } from "typeorm";
-import UsuarioStatus from "./enums/UsuarioStatus.js";
-import UsuarioTipos from "./enums/UsuarioTipos.js";
+import {EntitySchema} from 'typeorm';
+import UsuarioStatus from './enums/UsuarioStatus.js';
+import UsuarioTipos from './enums/UsuarioTipos.js';
 const Usuario = new EntitySchema({
-  name: "Usuario",
-  tableName: "Usuario",
+  name: 'Usuario',
+  tableName: 'Usuario',
   columns: {
     id: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     nome: {
-      type: "text",
+      type: 'text',
       nullable: false,
     },
     senha: {
-      type: "text",
+      type: 'text',
       nullable: false,
     },
     email_institucional: {
-      type: "text",
+      type: 'text',
       nullable: false,
     },
     tipo_usuario: {
-      type: "enum",
+      type: 'enum',
       enum: UsuarioTipos,
       nullable: false,
     },
     status_usuario: {
-      type: "enum",
+      type: 'enum',
       enum: UsuarioStatus,
-      nullable: false,      
+      nullable: false,
     },
     data_criacao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP", // Usando o valor default como no SQL
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP', // Usando o valor default como no SQL
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP", // Definido com CURRENT_TIMESTAMP como no SQL
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP', // Definido com CURRENT_TIMESTAMP como no SQL
     },
   },
 });

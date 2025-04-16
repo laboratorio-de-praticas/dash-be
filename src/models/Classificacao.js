@@ -1,29 +1,29 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Classificacao = new EntitySchema({
-  name: "Classificacao",
-  tableName: "Classificacao",
+  name: 'Classificacao',
+  tableName: 'Classificacao',
   columns: {
     id_classificacao: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     id_participante: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     id_projeto: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     estrelas: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     data_criacao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
 });

@@ -1,6 +1,6 @@
 const EventoTipos = {
-  Externo: "Externo",
-  Interno: "Interno",
+  Externo: 'Externo',
+  Interno: 'Interno',
 };
 
 export default EventoTipos;

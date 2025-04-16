@@ -1,5 +1,5 @@
-import { AppDataSource } from "../config/data-source.js";
-const repository = AppDataSource.getRepository("Usuario");
+import {AppDataSource} from '../config/data-source.js';
+const repository = AppDataSource.getRepository('Usuario');
 
 class UsuarioService {
   async findAll() {
@@ -13,8 +13,6 @@ class UsuarioService {
       throw error;
     }
   }
-
-  
 }
 
 export default new UsuarioService();

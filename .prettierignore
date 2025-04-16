@@ -1,0 +1,16 @@
+# do not run Prettier against JavaScript files
+# in "node_modules/" folders
+**/node_modules/*.js
+# do not run Prettier against JSON files
+# in "node_modules/" folders
+**/node_modules/*.json
+# do not run Prettier against JSON files
+# in "package-lock.json" files
+**/package-lock.json
+#do not run Prettier against .md files
+# in readmes files
+**/README.md
+#In docker-compose files
+# do not run Prettier against YAML files
+# in "docker-compose.yml" files
+**/docker-compose.yml

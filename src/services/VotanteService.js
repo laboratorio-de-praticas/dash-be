@@ -1,5 +1,5 @@
-import { AppDataSource } from "../config/data-source.js";
-const repository = AppDataSource.getRepository("Votante");
+import {AppDataSource} from '../config/data-source.js';
+const repository = AppDataSource.getRepository('Votante');
 
 class VotanteService {
   async findAll() {
