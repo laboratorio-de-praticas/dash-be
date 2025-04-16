@@ -1,5 +1,6 @@
 import { AppDataSource } from "../config/data-source.js";
 class DashBoardInterna {
+  /* ESSE SERVICE ESTÁ DESATUALIZADO */
   // Método para buscar dados para o dashboard  de eventos Interno Ativo de todos os cursos_semestres
   async findEventosInternoGeral() {
     const query = `
