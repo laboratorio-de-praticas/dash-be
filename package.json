@@ -12,9 +12,15 @@
   },
   "scripts": {
     "start": "npx nodemon index.js",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "eslint": "npx eslint ."
   },
   "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
     "prettier": "3.5.3"
   }
 }
