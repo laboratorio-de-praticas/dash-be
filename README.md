@@ -126,11 +126,25 @@ Onde as variaveis significam:
 
 Se **optar** pelo uso do Docker, siga estas instruções:
 
-1. No terminal, estando na pasta principal do projeto, digite o seguinte comando:
+1. Modifique o arquivo `.env` para que a variável **DB_HOST** aponte para o container do postgres
+
+    ```env
+    PORT=5000
+    DB_USERNAME=postgres
+    DB_PASSWORD=admin
+    DB_HOST=bd
+    DB_NAME=postgresbd
+    DB_PORT=5432
+    ```
+
+2. No terminal, estando na pasta principal do projeto, digite o seguinte comando:
    ```bash
    docker-compose up -d
    ```
-2. O serviço do PostgreSQL será iniciado em um contêiner e estará disponível na porta 5432.
+3. O serviço do PostgreSQL será iniciado em um contêiner e estará disponível na porta 5432, o serviço do Node estará rodando em `http://localhost:5000`
+
+
+    ```💡obs: O serviço só será acessível via localhost se você rodar o Docker localmente,   caso tenha feito usando uma VM ou um servidor externo o endereço será outro.```
 
 
 ## 🖋️ Documentação da API
