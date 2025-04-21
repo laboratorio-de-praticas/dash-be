@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const CategoriasProjetos = new EntitySchema({
   name: "CategoriaProjeto",
@@ -18,11 +18,11 @@ const CategoriasProjetos = new EntitySchema({
       default: () => "CURRENT_TIMESTAMP",
     },
     fk_id_projeto: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_categoria: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
   },

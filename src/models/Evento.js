@@ -12,20 +12,20 @@ const Evento = new EntitySchema({
       generated: "increment",
     },
     tipo_evento: {
-      type: "enum",
+      type: 'enum',
       enum: EventoTipos,
       nullable: false,
     },
     nome_evento: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     descricao_evento: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     status_evento: {
-      type: "enum",
+      type: 'enum',
       enum: EventoStatus,
       nullable: false,
     },
@@ -38,11 +38,11 @@ const Evento = new EntitySchema({
       nullable: true,
     },
     data_inicio: {
-      type: "timestamp",
+      type: 'timestamp',
       nullable: true,
     },
     data_fim: {
-      type: "timestamp",
+      type: 'timestamp',
       nullable: true,
     },
     data_criacao: {

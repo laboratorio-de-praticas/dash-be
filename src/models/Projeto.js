@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Projeto = new EntitySchema({
   name: "Projeto",
@@ -10,7 +10,7 @@ const Projeto = new EntitySchema({
       generated: "increment",
     },
     titulo: {
-      type: "text",
+      type: 'text',
       nullable: false, // Coluna obrigatória
     },
     descricao: {
@@ -38,12 +38,12 @@ const Projeto = new EntitySchema({
       default: true,
     },
     data_criacao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP", // Valor padrão para a data de criação
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP', // Valor padrão para a data de criação
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP", // Valor padrão para a data de alteração
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP', // Valor padrão para a data de alteração
     },
   },
 });

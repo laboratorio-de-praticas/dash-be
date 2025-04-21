@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Aluno = new EntitySchema({
   name: "Aluno",
@@ -6,11 +6,11 @@ const Aluno = new EntitySchema({
   columns: {
     id_aluno: {
       primary: true,
-      type: "int",
-      generated: "increment",
+      type: 'int',
+      generated: 'increment',
     },
     foto_url: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     data_matricula: {
@@ -30,16 +30,16 @@ const Aluno = new EntitySchema({
       unique: true
     },
     data_criacao: {
-      type: "timestamp", 
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP", 
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     
     fk_id_usuario: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
   },

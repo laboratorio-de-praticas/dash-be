@@ -30,8 +30,8 @@ const Avaliacoes = new EntitySchema({
       nullable: true,
     },
     data_criacao: {
-      type: "timestamp", 
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
       type: "timestamp", 

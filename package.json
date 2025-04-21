@@ -1,17 +1,26 @@
 {
-   "name": "dash-be-develop",
-   "version": "0.0.1",
-   "description": "Backend para dashboards relacionados as votacoes",
-   "type": "module",
-   "dependencies": {
-      "dotenv": "^16.4.7",
-      "express": "^4.21.2",
-      "pg": "^8.4.0",
-      "reflect-metadata": "^0.1.13",
-      "typeorm": "0.3.21"
-   },
-   "scripts": {
-      "start": "npx nodemon index.js",
-      "typeorm": "typeorm-ts-node-commonjs"
-   }
+  "name": "dash-be-develop",
+  "version": "0.0.1",
+  "description": "Backend para dashboards relacionados as votacoes",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.4.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.21"
+  },
+  "scripts": {
+    "start": "npx nodemon index.js",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "eslint": "npx eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "prettier": "3.5.3"
+  }
 }

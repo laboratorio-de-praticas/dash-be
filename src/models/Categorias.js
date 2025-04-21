@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Categoria = new EntitySchema({
   name: "Categoria",
@@ -10,20 +10,20 @@ const Categoria = new EntitySchema({
       generated: "increment",
     },
     nome: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     descricao: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     data_criacao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
 });

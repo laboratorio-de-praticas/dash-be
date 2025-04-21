@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Visitante = new EntitySchema({
   name: "Visitante",
@@ -18,7 +18,7 @@ const Visitante = new EntitySchema({
       nullable: false,
     },
     chave_acesso: {
-      type: "char",
+      type: 'char',
       length: 4,
       nullable: true,
     },

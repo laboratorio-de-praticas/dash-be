@@ -1,4 +1,4 @@
-import { AppDataSource } from "../config/data-source.js";
+import {AppDataSource} from '../config/data-source.js';
 class DashBoardInterna {
   /* ESSE SERVICE ESTÁ DESATUALIZADO */
   // Método para buscar dados para o dashboard  de eventos Interno Ativo de todos os cursos_semestres
@@ -40,10 +40,13 @@ class DashBoardInterna {
     try {
       const result = await AppDataSource.query(query);
 
-      console.log("Dados do Evento Interno Geral obtidos com sucesso!");
+      console.log('Dados do Evento Interno Geral obtidos com sucesso!');
       return result;
     } catch (error) {
-      console.log("Erro ao executar consulta dos Eventos Internos Geral:", error);
+      console.log(
+        'Erro ao executar consulta dos Eventos Internos Geral:',
+        error,
+      );
       throw error; // Repassa o erro para o controller lidar
     }
   }
@@ -87,20 +90,19 @@ class DashBoardInterna {
       const result = await AppDataSource.query(query);
 
       console.log(
-        `Dados do Evento Interno do Curso ${curso} obtidos com sucesso!`
+        `Dados do Evento Interno do Curso ${curso} obtidos com sucesso!`,
       );
       return result;
     } catch (error) {
       console.log(
         `Erro ao executar consulta de evento Interno do curso ${curso}: `,
-        error
+        error,
       );
       throw error; // Repassa o erro para o controller lidar
     }
   }
 
   //Próximas funções:.....
-  
 }
 
 export default new DashBoardInterna();
