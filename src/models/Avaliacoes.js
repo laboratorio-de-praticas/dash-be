@@ -1,32 +1,32 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const Avaliacoes = new EntitySchema({
-  name: "Avaliacoes",
-  tableName: "Avaliacoes",
+  name: 'Avaliacoes',
+  tableName: 'Avaliacoes',
   columns: {
     id_avaliacao: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     fk_id_avaliador: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_projeto: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     estrelas_inovador: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     estrelas_acolhedor: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     comentario: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     data_criacao: {
@@ -34,8 +34,8 @@ const Avaliacoes = new EntitySchema({
       default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
-      type: "timestamp", 
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
 });

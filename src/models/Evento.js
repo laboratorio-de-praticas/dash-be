@@ -1,15 +1,15 @@
-import { EntitySchema } from "typeorm";
-import EventoTipos from "./enums/EventoTipos.js";
-import EventoStatus from "./enums/EventoStatus.js";
+import {EntitySchema} from 'typeorm';
+import EventoTipos from './enums/EventoTipos.js';
+import EventoStatus from './enums/EventoStatus.js';
 
 const Evento = new EntitySchema({
-  name: "Evento",
-  tableName: "Eventos",
+  name: 'Evento',
+  tableName: 'Eventos',
   columns: {
     id_evento: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     tipo_evento: {
       type: 'enum',
@@ -30,11 +30,11 @@ const Evento = new EntitySchema({
       nullable: false,
     },
     curso_semestre: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     ano_semestre: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
     data_inicio: {
@@ -46,11 +46,11 @@ const Evento = new EntitySchema({
       nullable: true,
     },
     data_criacao: {
-      type: "timestamp",
+      type: 'timestamp',
       createDate: true,
     },
     data_alteracao: {
-      type: "timestamp",
+      type: 'timestamp',
       updateDate: true,
     },
   },

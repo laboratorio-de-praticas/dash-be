@@ -1,20 +1,20 @@
 import {EntitySchema} from 'typeorm';
 
 const Visitante = new EntitySchema({
-  name: "Visitante",
-  tableName: "Visitantes",
+  name: 'Visitante',
+  tableName: 'Visitantes',
   columns: {
     id_visitante: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     nome: {
-      type: "text",
+      type: 'text',
       nullable: false,
     },
     telefone: {
-      type: "text",
+      type: 'text',
       nullable: false,
     },
     chave_acesso: {
@@ -23,12 +23,12 @@ const Visitante = new EntitySchema({
       nullable: true,
     },
     data_criacao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_alteracao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
 });

@@ -13,7 +13,7 @@ export default defineConfig([
   {files: ['**/*.{js,mjs,cjs}'], languageOptions: {globals: globals.node}},
   {
     rules: {
-      'prettier/prettier': 'warn', // APLICA AS REGRAS DO PRETTIER COMO ERRO NO ESLINT
+      'prettier/prettier': ['warn', {endOfLine: 'auto'}], // APLICA AS REGRAS DO PRETTIER COMO ERRO NO ESLINT
       'no-unused-vars': 'error', //VERIFICA VARIÁVEIS NÃO UTILIZADAS
       'no-undef': 'error', //VERIFICA VARIÁVEIS NÃO DEFINIDAS
       'no-console': 'off', //PERMITE O USO DO CONSOLE.LOG

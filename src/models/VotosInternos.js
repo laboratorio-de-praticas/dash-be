@@ -1,34 +1,34 @@
 import {EntitySchema} from 'typeorm';
 
 const VotosInternos = new EntitySchema({
-  name: "VotosInternos",
-  tableName: "VotosInternos",
+  name: 'VotosInternos',
+  tableName: 'VotosInternos',
   columns: {
     id_voto: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     fk_id_evento: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_aluno: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_representante: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     data_criacao: {
-      type: "timestamp", 
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
   },
   uniques: [
     {
-      columns: ["fk_id_evento", "fk_id_aluno"],
+      columns: ['fk_id_evento', 'fk_id_aluno'],
     },
   ],
 });

@@ -1,13 +1,13 @@
 import {EntitySchema} from 'typeorm';
 
 const Categoria = new EntitySchema({
-  name: "Categoria",
-  tableName: "Categorias",
+  name: 'Categoria',
+  tableName: 'Categorias',
   columns: {
     id_categoria: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     nome: {
       type: 'text',

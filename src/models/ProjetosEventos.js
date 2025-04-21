@@ -1,24 +1,24 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const ProjetosEventos = new EntitySchema({
-  name: "ProjetosEventos",
-  tableName: "ProjetosEventos",
+  name: 'ProjetosEventos',
+  tableName: 'ProjetosEventos',
   columns: {
     id_projetos_eventos: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     fk_id_projeto: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_evento: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     qrcode: {
-      type: "text",
+      type: 'text',
       nullable: true,
     },
   },

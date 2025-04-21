@@ -1,41 +1,41 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 
 const VotosExternos = new EntitySchema({
-  name: "VotosExternos",
-  tableName: "VotosExternos",
+  name: 'VotosExternos',
+  tableName: 'VotosExternos',
   columns: {
     id_voto: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     fk_id_evento: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_projeto: {
-      type: "int",
+      type: 'int',
       nullable: false,
     },
     fk_id_visitante: {
-      type: "int",
+      type: 'int',
       nullable: true,
     },
     fk_id_avaliador: {
-      type: "int",
+      type: 'int',
       nullable: true,
     },
     data_criacao: {
-      type: "timestamp",
+      type: 'timestamp',
       createDate: true,
     },
   },
   uniques: [
     {
-      columns: ["fk_id_evento", "fk_id_visitante", "fk_id_projeto"],
+      columns: ['fk_id_evento', 'fk_id_visitante', 'fk_id_projeto'],
     },
     {
-      columns: ["fk_id_evento", "fk_id_avaliador", "fk_id_projeto"],
+      columns: ['fk_id_evento', 'fk_id_avaliador', 'fk_id_projeto'],
     },
   ],
 });

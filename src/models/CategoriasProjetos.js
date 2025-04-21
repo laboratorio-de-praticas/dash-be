@@ -1,21 +1,21 @@
 import {EntitySchema} from 'typeorm';
 
 const CategoriasProjetos = new EntitySchema({
-  name: "CategoriaProjeto",
-  tableName: "CategoriasProjetos",
+  name: 'CategoriaProjeto',
+  tableName: 'CategoriasProjetos',
   columns: {
     id: {
-      type: "int",
+      type: 'int',
       primary: true,
-      generated: "increment",
+      generated: 'increment',
     },
     data_criacao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     data_altercao: {
-      type: "timestamp",
-      default: () => "CURRENT_TIMESTAMP",
+      type: 'timestamp',
+      default: () => 'CURRENT_TIMESTAMP',
     },
     fk_id_projeto: {
       type: 'int',
@@ -28,7 +28,7 @@ const CategoriasProjetos = new EntitySchema({
   },
   uniques: [
     {
-      columns: ["fk_id_projeto", "fk_id_categoria"],
+      columns: ['fk_id_projeto', 'fk_id_categoria'],
     },
   ],
 });

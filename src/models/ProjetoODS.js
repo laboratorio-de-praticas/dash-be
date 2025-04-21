@@ -1,14 +1,14 @@
-import { EntitySchema } from "typeorm";
+import {EntitySchema} from 'typeorm';
 const ProjetoODS = new EntitySchema({
-  name: "ProjetoODS",
-  tableName: "ProjetoODS",
+  name: 'ProjetoODS',
+  tableName: 'ProjetoODS',
   columns: {
     projeto_id: {
-      type: "int",
+      type: 'int',
       primary: true,
     },
     ods_id: {
-      type: "int",
+      type: 'int',
       primary: true,
     },
   },
