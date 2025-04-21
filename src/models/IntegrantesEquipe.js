@@ -8,11 +8,11 @@ const IntegrantesEquipe = new EntitySchema({
             type: "int",
             generated: "increment"
         },
-        fk_projeto_id:{
+        projeto_id:{
             type: "int",
             nullable: false
         },
-        fk_aluno_id:{
+        aluno_id:{
             type: "int",
             nullable: false
         }

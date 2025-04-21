@@ -7,7 +7,7 @@ const ProjetoODS = new EntitySchema({
       type: "int",
       primary: true,
     },
-    fk_ods_id: {
+    ods_id: {
       type: "int",
       primary: true,
     },

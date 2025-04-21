@@ -3,7 +3,7 @@ import UsuarioStatus from "./enums/UsuarioStatus.js";
 import UsuarioTipos from "./enums/UsuarioTipos.js";
 const Usuario = new EntitySchema({
   name: "Usuario",
-  tableName: "Usuario",
+  tableName: "Usuarios",
   columns: {
     id: {
       primary: true,
@@ -12,15 +12,12 @@ const Usuario = new EntitySchema({
     },
     nome: {
       type: "text",
-      nullable: false,
     },
     senha: {
       type: "text",
-      nullable: false,
     },
     telefone: {
       type: "text",
-      nullable: true,
     },
     email_institucional: {
       type: "text",
@@ -45,6 +42,11 @@ const Usuario = new EntitySchema({
       default: () => "CURRENT_TIMESTAMP", // Definido com CURRENT_TIMESTAMP como no SQL
     },
   },
+  uniques: [
+    {
+      columns: ["email_institucional"],
+    },
+  ],
 });
 
 export default Usuario;

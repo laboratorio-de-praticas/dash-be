@@ -1,4 +1,4 @@
-import { EntitySchema, Exclusion } from "typeorm";
+import { EntitySchema } from "typeorm";
 
 const ProjetoLinhaExtensao = new EntitySchema({
   name: "ProjetoLinhaExtensao",

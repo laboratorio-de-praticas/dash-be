@@ -1,5 +1,5 @@
 import { EntitySchema } from "typeorm";
-import RepresentanteSituacao from "./enums/RepresentanteSituacao";
+import RepresentanteSituacao from "./enums/RepresentanteSituacao.js";
 const Representante = new EntitySchema({
   name: "Representante",
   tableName: "Representantes",

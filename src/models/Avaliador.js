@@ -1,4 +1,4 @@
-import { EntitySchema, Exclusion } from "typeorm";
+import { EntitySchema } from "typeorm";
 
 const Avaliador = new EntitySchema({
   name: "Avaliador",
@@ -25,6 +25,10 @@ const Avaliador = new EntitySchema({
       type: "timestamp",
       default: () => "CURRENT_TIMESTAMP",
     },
+    fk_id_usuario:{
+      type: "int",
+      nullable: false,
+    }
   },
   uniques: [
     {

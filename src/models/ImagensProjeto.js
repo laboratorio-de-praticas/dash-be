@@ -8,7 +8,7 @@ const ImagensProjeto = new EntitySchema({
             type: "int",
             generated: "increment"
         },
-        fk_projeto_id:{
+        projeto_id:{
             type: "int",
             nullable: false
         },

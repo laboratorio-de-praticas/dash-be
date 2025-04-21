@@ -1,6 +1,6 @@
 import { EntitySchema } from "typeorm";
 
-const Categoriaa = new EntitySchema({
+const Categoria = new EntitySchema({
   name: "Categoria",
   tableName: "Categorias",
   columns: {

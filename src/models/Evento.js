@@ -1,6 +1,6 @@
 import { EntitySchema } from "typeorm";
-import EventoTipos from "./enums/EventoTipos";
-import EventoStatus from "./enums/EventoStatus";
+import EventoTipos from "./enums/EventoTipos.js";
+import EventoStatus from "./enums/EventoStatus.js";
 
 const Evento = new EntitySchema({
   name: "Evento",

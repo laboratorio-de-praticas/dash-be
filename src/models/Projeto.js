@@ -2,7 +2,7 @@ import { EntitySchema } from "typeorm";
 
 const Projeto = new EntitySchema({
   name: "Projeto",
-  tableName: "Projeto", // Nome da tabela no banco de dados
+  tableName: "Projetos", // Nome da tabela no banco de dados
   columns: {
     id_projeto: {
       primary: true,
