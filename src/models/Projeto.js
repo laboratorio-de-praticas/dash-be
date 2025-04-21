@@ -1,21 +1,41 @@
 import {EntitySchema} from 'typeorm';
 
 const Projeto = new EntitySchema({
-  name: 'Projeto',
-  tableName: 'Projeto', // Nome da tabela no banco de dados
+  name: "Projeto",
+  tableName: "Projetos", // Nome da tabela no banco de dados
   columns: {
     id_projeto: {
       primary: true,
-      type: 'int',
-      generated: 'increment',
+      type: "int",
+      generated: "increment",
     },
     titulo: {
       type: 'text',
       nullable: false, // Coluna obrigatória
     },
     descricao: {
-      type: 'text',
+      type: "text",
       nullable: false, // Coluna obrigatória
+    },
+    foto_url: {
+      type: "text",
+      nullable: true,
+    },
+    trl: {
+      type: "int",
+      nullable: false, // Coluna obrigatória
+    },
+    cea: {
+      type: "int",
+      nullable: false, // Coluna obrigatória
+    },
+    turma: {
+      type: "text",
+      nullable: false, // Coluna obrigatória
+    },
+    ativo: {
+      type: "boolean",
+      default: true,
     },
     data_criacao: {
       type: 'timestamp',

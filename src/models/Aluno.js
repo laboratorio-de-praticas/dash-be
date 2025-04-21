@@ -1,8 +1,8 @@
 import {EntitySchema} from 'typeorm';
 
 const Aluno = new EntitySchema({
-  name: 'Aluno',
-  tableName: 'Aluno',
+  name: "Aluno",
+  tableName: "Alunos",
   columns: {
     id_aluno: {
       primary: true,
@@ -13,9 +13,21 @@ const Aluno = new EntitySchema({
       type: 'text',
       nullable: true,
     },
-    data_ingresso: {
-      type: 'timestamp',
+    data_matricula: {
+      type: "timestamp",
       nullable: true,
+    },
+    deseja_ser_candidato: {
+      type: "boolean",
+      default: false
+    },
+    curso_semestre: {
+      type: "text",
+      nullable: true,
+    },
+    ra: {
+      type: "int",
+      unique: true
     },
     data_criacao: {
       type: 'timestamp',
@@ -25,10 +37,7 @@ const Aluno = new EntitySchema({
       type: 'timestamp',
       default: () => 'CURRENT_TIMESTAMP',
     },
-    curso_semestre: {
-      type: 'text',
-      nullable: true,
-    },
+    
     fk_id_usuario: {
       type: 'int',
       nullable: false,

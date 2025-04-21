@@ -1,25 +1,20 @@
-import {EntitySchema} from 'typeorm';
+import { EntitySchema } from "typeorm";
 
-const Visitante = new EntitySchema({
-  name: "Visitante",
-  tableName: "Visitantes",
+const Avaliador = new EntitySchema({
+  name: "Avaliador",
+  tableName: "Avaliadores",
   columns: {
-    id_visitante: {
+    id_avaliador: {
       type: "int",
       primary: true,
       generated: "increment",
     },
     nome: {
       type: "text",
-      nullable: false,
+      nullable: true,
     },
     telefone: {
       type: "text",
-      nullable: false,
-    },
-    chave_acesso: {
-      type: 'char',
-      length: 4,
       nullable: true,
     },
     data_criacao: {
@@ -30,6 +25,15 @@ const Visitante = new EntitySchema({
       type: "timestamp",
       default: () => "CURRENT_TIMESTAMP",
     },
+    fk_id_usuario:{
+      type: "int",
+      nullable: false,
+    }
   },
+  uniques: [
+    {
+      columns: ["fk_id_usuario"],
+    },
+  ],
 });
-export default Visitante;
+export default Avaliador;

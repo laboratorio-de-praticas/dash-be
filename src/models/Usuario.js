@@ -2,8 +2,8 @@ import {EntitySchema} from 'typeorm';
 import UsuarioStatus from './enums/UsuarioStatus.js';
 import UsuarioTipos from './enums/UsuarioTipos.js';
 const Usuario = new EntitySchema({
-  name: 'Usuario',
-  tableName: 'Usuario',
+  name: "Usuario",
+  tableName: "Usuarios",
   columns: {
     id: {
       primary: true,
@@ -11,12 +11,13 @@ const Usuario = new EntitySchema({
       generated: 'increment',
     },
     nome: {
-      type: 'text',
-      nullable: false,
+      type: "text",
     },
     senha: {
-      type: 'text',
-      nullable: false,
+      type: "text",
+    },
+    telefone: {
+      type: "text",
     },
     email_institucional: {
       type: 'text',
@@ -41,6 +42,11 @@ const Usuario = new EntitySchema({
       default: () => 'CURRENT_TIMESTAMP', // Definido com CURRENT_TIMESTAMP como no SQL
     },
   },
+  uniques: [
+    {
+      columns: ["email_institucional"],
+    },
+  ],
 });
 
 export default Usuario;

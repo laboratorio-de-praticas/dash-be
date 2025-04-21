@@ -1,13 +1,13 @@
 import {EntitySchema} from 'typeorm';
 
 const Categoria = new EntitySchema({
-  name: 'Categoria',
-  tableName: 'Categoria',
+  name: "Categoria",
+  tableName: "Categorias",
   columns: {
     id_categoria: {
+      type: "int",
       primary: true,
-      type: 'int',
-      generated: 'increment',
+      generated: "increment",
     },
     nome: {
       type: 'text',
@@ -27,5 +27,4 @@ const Categoria = new EntitySchema({
     },
   },
 });
-
 export default Categoria;
