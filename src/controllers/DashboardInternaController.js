@@ -1,36 +1,43 @@
 import DashboardInternasService from '../services/DashboardInternaService.js';
+import BadRequestError from '../errors/BadRequestError.js';
+import CursosSemestre from '../models/enums/CursoSemestre.js';
 class DashBoardInternaController {
-  // Serve a rota /v1/dashboard/interna
-  async findDashboardInternoGeral(req, res) {
+  // Serve a rota /v1/dashboard/interno
+  async findDashboardInternoGeral(req, res, next) {
     try {
-      const dashboardInternoGeralDados =
-        await DashboardInternasService.findEventosInternoGeral();
+      const response =
+        await DashboardInternasService.findEventosInternoGeralAtivo();
 
-      return res.status(200).json(dashboardInternoGeralDados);
+      return res.status(200).json(response);
     } catch (error) {
-      return res.status(500).json({message: error.message});
+      console.error('Erro ao executar consulta dos Eventos Internos Geral!');
+      next(error); // Passa o erro para o middleware de tratamento de erros
     }
   }
 
-  // Serve a rota /v1/dashboard/interna/:curso
-  async findDashboardInternoByCurso(req, res) {
+  // Serve a rota /v1/dashboard/interno/curso/:curso_semestre
+  async findDashboardInternoByCurso(req, res, next) {
+    const curso = req.params.curso_semestre.toUpperCase(); // Obtém o parâmetro de curso da URL
     try {
-      const curso = req.params.curso; // Obtém o parâmetro de curso da URL
-
       // Valida o parâmetro de curso
-      if (!curso || curso.trim() === '') {
-        return res
-          .status(400)
-          .json({message: 'Curso não fornecido corretamente!'});
+      if (
+        !curso ||
+        curso.trim() === '' ||
+        !Object.values(CursosSemestre).includes(curso)
+      ) {
+        throw new BadRequestError(
+          'Curso informado inválido. Por favor inserir um curso válido como parâmetro.',
+        );
       }
 
       // Chama o serviço para buscar os dados do dashboard interno ativo por curso
-      const dashboardInternoGeralDados =
+      const response =
         await DashboardInternasService.findEventoInternoByCurso(curso);
 
-      return res.status(200).json(dashboardInternoGeralDados);
+      return res.status(200).json(response);
     } catch (error) {
-      return res.status(500).json({message: error.message});
+      console.error(`Erro ao executar consulta de evento Interno do curso `);
+      next(error);
     }
   }
 }
