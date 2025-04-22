@@ -34,6 +34,7 @@ class DashBoardInternaController {
       const response =
         await DashboardInternasService.findEventoInternoByCurso(curso);
 
+
       return res.status(200).json(response);
     } catch (error) {
       console.error(`Erro ao executar consulta de evento Interno do curso `);
