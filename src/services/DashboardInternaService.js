@@ -1,5 +1,5 @@
 import {AppDataSource} from '../config/data-source.js';
-import VotoInternoService from './VotoInternoService.js';
+import VotosInternosService from './VotosInternosService.js';
 import NotFoundError from '../errors/NotFoundError.js';
 class DashBoardInterna {
   // Método para buscar dados para o dashboard  de eventos Interno Ativo de todos os cursos_semestres
@@ -150,26 +150,28 @@ class DashBoardInterna {
         WHERE e.tipo_evento = 'Interno' AND e.status_evento = 'Ativo' AND  e.curso_semestre = $1
         ORDER BY e.curso_semestre ASC, e.data_inicio DESC;
       `;
-    // Executa a consulta no banco de dados
-    const result = await AppDataSource.query(query, [cursoSemestre]);
 
-    if (!result || result.length === 0) {
+    // Executa a consulta no banco de dados
+    const queryResult = await AppDataSource.query(query, [cursoSemestre]);
+
+    if (!queryResult || queryResult.length === 0) {
       throw new NotFoundError(
         `Nenhum evento interno ativo encontrado para curso ${cursoSemestre}`,
       );
     }
 
-    const logsVotosResponse = await VotoInternoService.findLogDeVotosByEventoId(
-      result.id_evento,
-    );
-    
-    result[0].log_votos = logsVotosResponse;
+    const response = queryResult[0];
+
+    const logsVotosResponse =
+      await VotosInternosService.findLogDeVotosByEventoId(response.id_evento);
+
+    response.log_votos = logsVotosResponse;
 
     console.log(
       `Dados do Evento Interno do Curso ${cursoSemestre} obtidos com sucesso!`,
     );
 
-    return result[0];
+    return response;
   }
 }
 

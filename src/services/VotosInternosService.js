@@ -1,6 +1,5 @@
 import {AppDataSource} from '../config/data-source.js';
-import NotFoundError from '../errors/NotFoundError.js';
-class VotoInternoService {
+class VotosInternosService {
   async findLogDeVotosByEventoId(eventoId) {
     const query = `    
         SELECT 
@@ -24,13 +23,14 @@ class VotoInternoService {
         INNER JOIN "Alunos" a_representante ON a_representante.id_aluno = r.fk_id_aluno
         INNER JOIN "Usuarios" u_representante ON u_representante.id = a_representante.fk_id_usuario
         inner join "Eventos" e on e.id_evento = vi.fk_id_evento
-        where e.id_evento = 1
+        where e.id_evento = $1
         ORDER BY vi.data_criacao DESC;
     `;
 
-    const response = await AppDataSource.query(query);
+    console.log('Procurando');
+    const response = await AppDataSource.query(query, [eventoId]);
     return response;
   }
 }
 
-export default new VotoInternoService();
+export default new VotosInternosService();

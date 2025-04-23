@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import DashboardInternaRoutes from './src/routes/DashBoardInternaRoutes.js';
 import DashboardExternaRoutes from './src/routes/DashBoardExternaRoutes.js';
 import ListenerRoutes from './src/routes/ListenerRoutes.js';
+import VotosInternosRoutes from './src/routes/VotosInternosRoutes.js';
+import EventosRoutes from './src/routes/EventoRoutes.js';
 //Middleware
 import errorHandler from './src/middlewares/errorHandler.js';
 /* Variáveis de Ambiente */
@@ -18,6 +20,8 @@ app.use(express.json());
 app.use('/', DashboardInternaRoutes);
 app.use('/', DashboardExternaRoutes);
 app.use('/', ListenerRoutes);
+app.use('/', VotosInternosRoutes);
+app.use('/', EventosRoutes);
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
