@@ -5,6 +5,10 @@ import dotenv from 'dotenv';
 import DashboardInternaRoutes from './src/routes/DashBoardInternaRoutes.js';
 import DashboardExternaRoutes from './src/routes/DashBoardExternaRoutes.js';
 import ListenerRoutes from './src/routes/ListenerRoutes.js';
+import VotosInternosRoutes from './src/routes/VotosInternosRoutes.js';
+import EventosRoutes from './src/routes/EventoRoutes.js';
+//Middleware
+import errorHandler from './src/middlewares/errorHandler.js';
 /* Variáveis de Ambiente */
 dotenv.config();
 
@@ -12,10 +16,18 @@ dotenv.config();
 const app = express();
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
+// Importando Rotas
+app.use('/', DashboardInternaRoutes);
+app.use('/', DashboardExternaRoutes);
+app.use('/', ListenerRoutes);
+app.use('/', VotosInternosRoutes);
+app.use('/', EventosRoutes);
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
+//Manter Middlewares no final da definição das rotas
+// Middleware para tratamento de erros
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 
@@ -23,11 +35,6 @@ const PORT = process.env.PORT;
 AppDataSource.initialize()
   .then(async () => {
     console.log('Banco de dados conectado!');
-
-    // Importando Rotas
-    app.use('/', DashboardInternaRoutes);
-    app.use('/', DashboardExternaRoutes);
-    app.use('/', ListenerRoutes);
 
     // Iniciando Serviço na porta definida
     app.listen(PORT, (error) => {

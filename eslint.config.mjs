@@ -14,7 +14,13 @@ export default defineConfig([
   {
     rules: {
       'prettier/prettier': ['warn', {endOfLine: 'auto'}], // APLICA AS REGRAS DO PRETTIER COMO ERRO NO ESLINT
-      'no-unused-vars': 'error', //VERIFICA VARIÁVEIS NÃO UTILIZADAS
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ], //VERIFICA VARIÁVEIS NÃO UTILIZADAS
       'no-undef': 'error', //VERIFICA VARIÁVEIS NÃO DEFINIDAS
       'no-console': 'off', //PERMITE O USO DO CONSOLE.LOG
       'prefer-const': 'warn', //USE CONST AO INVÉS DE LET PARA VARIÁVEIS QUE NÃO SOFREM REATRIBUIÇÃO
