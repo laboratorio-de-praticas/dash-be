@@ -1,53 +1,58 @@
-import { EntitySchema } from "typeorm";
-import { TipoEvento } from "./enums/TipoEvento.js";
+import {EntitySchema} from 'typeorm';
+import EventoTipos from './enums/EventoTipos.js';
+import EventoStatus from './enums/EventoStatus.js';
+
 const Evento = new EntitySchema({
-  name: "Evento",
-  tableName: "eventos",
+  name: 'Evento',
+  tableName: 'Eventos',
   columns: {
-    id: {
+    id_evento: {
+      type: 'int',
       primary: true,
-      type: "uuid",
-      generated: "uuid",
-    },
-    nome: {
-      type: "varchar",
-      nullable: false,
+      generated: 'increment',
     },
     tipo_evento: {
-      type: "enum",
-      enum: TipoEvento,
-      default: TipoEvento.Interno,
+      type: 'enum',
+      enum: EventoTipos,
       nullable: false,
     },
-    data_inicio: {
-      type: "timestamp",
+    nome_evento: {
+      type: 'text',
+      nullable: true,
+    },
+    descricao_evento: {
+      type: 'text',
+      nullable: true,
+    },
+    status_evento: {
+      type: 'enum',
+      enum: EventoStatus,
       nullable: false,
-    },
-    data_fim: {
-      type: "timestamp",
-      nullable: false,
-    },
-    descricao: {
-      type: "varchar",
-      nullable: false,
-    },
-    status: {
-      type: "varchar",
-      nullable: false,
-    },
-    data_alteracao: {
-      type: "timestamp",
-      updateDate: true,
-    },
-    data_criacao: {
-      type: "timestamp",
-      createDate: true,
     },
     curso_semestre: {
-      type: "varchar",
-      nullable: false,
+      type: 'text',
+      nullable: true,
+    },
+    ano_semestre: {
+      type: 'text',
+      nullable: true,
+    },
+    data_inicio: {
+      type: 'timestamp',
+      nullable: true,
+    },
+    data_fim: {
+      type: 'timestamp',
+      nullable: true,
+    },
+    data_criacao: {
+      type: 'timestamp',
+      createDate: true,
+    },
+    data_alteracao: {
+      type: 'timestamp',
+      updateDate: true,
     },
   },
 });
-
 export default Evento;

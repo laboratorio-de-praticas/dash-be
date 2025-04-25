@@ -1,33 +1,21 @@
 import {EntitySchema} from 'typeorm';
 
-const Aluno = new EntitySchema({
-  name: 'Aluno',
-  tableName: 'Alunos',
+const Avaliador = new EntitySchema({
+  name: 'Avaliador',
+  tableName: 'Avaliadores',
   columns: {
-    id_aluno: {
-      primary: true,
+    id_avaliador: {
       type: 'int',
+      primary: true,
       generated: 'increment',
     },
-    foto_url: {
+    nome: {
       type: 'text',
       nullable: true,
     },
-    data_matricula: {
-      type: 'timestamp',
-      nullable: true,
-    },
-    deseja_ser_candidato: {
-      type: 'boolean',
-      default: false,
-    },
-    curso_semestre: {
+    telefone: {
       type: 'text',
       nullable: true,
-    },
-    ra: {
-      type: 'int',
-      unique: true,
     },
     data_criacao: {
       type: 'timestamp',
@@ -37,12 +25,15 @@ const Aluno = new EntitySchema({
       type: 'timestamp',
       default: () => 'CURRENT_TIMESTAMP',
     },
-
     fk_id_usuario: {
       type: 'int',
       nullable: false,
     },
   },
+  uniques: [
+    {
+      columns: ['fk_id_usuario'],
+    },
+  ],
 });
-
-export default Aluno;
+export default Avaliador;
