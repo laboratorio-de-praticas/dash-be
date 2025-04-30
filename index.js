@@ -1,6 +1,21 @@
 import {AppDataSource} from './src/config/data-source.js';
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
+
+// Configuração do CORS
+const allowedOrigins = ['http://localhost:3000'];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+app.use(cors(corsOptions));
+
 //Routes
 import DashboardInternaRoutes from './src/routes/DashBoardInternaRoutes.js';
 import DashboardExternaRoutes from './src/routes/DashBoardExternaRoutes.js';
