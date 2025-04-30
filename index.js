@@ -14,7 +14,7 @@ const corsOptions = {
     }
   },
 };
-app.use(cors(corsOptions));
+
 
 //Routes
 import DashboardInternaRoutes from './src/routes/DashBoardInternaRoutes.js';
@@ -44,6 +44,7 @@ app.get('/', (req, res) => {
 // Middleware para tratamento de erros
 app.use(errorHandler);
 
+app.use(cors(corsOptions));
 const PORT = process.env.PORT;
 
 // Estabelecer Conexão com o banco de dados
