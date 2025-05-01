@@ -31,6 +31,8 @@ dotenv.config();
 const app = express();
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+// O middleware do cors deve ser aplicado antes de definir as rotas para o funcionamento correto
+app.use(cors(corsOptions));
 // Importando Rotas
 app.use('/', DashboardInternaRoutes);
 app.use('/', DashboardExternaRoutes);
@@ -44,7 +46,7 @@ app.get('/', (req, res) => {
 // Middleware para tratamento de erros
 app.use(errorHandler);
 
-app.use(cors(corsOptions));
+
 const PORT = process.env.PORT;
 
 // Estabelecer Conexão com o banco de dados
