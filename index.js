@@ -1,6 +1,21 @@
 import {AppDataSource} from './src/config/data-source.js';
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
+
+// Configuração do CORS
+const allowedOrigins = ['http://localhost:3000'];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+
 //Routes
 import DashboardInternaRoutes from './src/routes/DashBoardInternaRoutes.js';
 import DashboardExternaRoutes from './src/routes/DashBoardExternaRoutes.js';
@@ -16,6 +31,8 @@ dotenv.config();
 const app = express();
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+// O middleware do cors deve ser aplicado antes de definir as rotas para o funcionamento correto
+app.use(cors(corsOptions));
 // Importando Rotas
 app.use('/', DashboardInternaRoutes);
 app.use('/', DashboardExternaRoutes);
@@ -28,6 +45,7 @@ app.get('/', (req, res) => {
 //Manter Middlewares no final da definição das rotas
 // Middleware para tratamento de erros
 app.use(errorHandler);
+
 
 const PORT = process.env.PORT;
 
