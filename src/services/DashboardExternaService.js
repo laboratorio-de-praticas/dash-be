@@ -54,8 +54,12 @@ class DashBoardInterna {
                     SELECT 
                         p.id_projeto,
                         p.titulo AS nome_projeto,
+                        p.descricao,
+                        p.nome_equipe,
+                        p.turma,
+                        p.foto_url,
 
-                        -- Subquery para pegar os integrantes sem repetição
+                        -- Integrantes
                         (
                             SELECT STRING_AGG(DISTINCT u.nome, ', ')
                             FROM "IntegrantesEquipe" ie
@@ -63,6 +67,40 @@ class DashBoardInterna {
                             JOIN "Usuarios" u ON u.id = a.fk_id_usuario
                             WHERE ie.projeto_id = p.id_projeto
                         ) AS integrantes,
+
+                        -- Categorias (Áreas de atuação)
+                        (
+                            SELECT STRING_AGG(DISTINCT c.descricao, ', ')
+                            FROM "CategoriasProjetos" cp
+                            JOIN "Categorias" c ON c.id_categoria = cp.fk_id_categoria
+                            WHERE cp.fk_id_projeto = p.id_projeto
+                        ) AS categorias,
+
+                        -- ODS vinculadas
+                        (
+                            SELECT STRING_AGG(DISTINCT o.descricao, ', ')
+                            FROM "ProjetoODS" po
+                            JOIN "ODS" o ON o.id_ods = po.ods_id
+                            WHERE po.projeto_id = p.id_projeto
+                        ) AS ods,
+
+                        -- Linhas de extensão
+                        (
+                            SELECT STRING_AGG(DISTINCT le.descricao, ', ')
+                            FROM "ProjetoLinhaExtensao" ple
+                            JOIN "LinhaExtensao" le ON le.id_linha = ple.linha_extensao_id
+                            WHERE ple.projeto_id = p.id_projeto
+                        ) AS linhas_extensao,
+
+                        -- Imagens do projeto
+                        (
+                            SELECT json_agg(img)
+                            FROM (
+                                SELECT ip.id_imagem, ip.imagem_url
+                                FROM "ImagensProjeto" ip
+                                WHERE ip.projeto_id = p.id_projeto
+                            ) AS img
+                        ) AS imagens_projeto,
 
                         -- Votos recebidos
                         (
