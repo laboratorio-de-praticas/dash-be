@@ -15,12 +15,12 @@ const corsOptions = {
   },
 };
 
-
 //Routes
 import DashboardInternaRoutes from './src/routes/DashBoardInternaRoutes.js';
 import DashboardExternaRoutes from './src/routes/DashBoardExternaRoutes.js';
 import ListenerRoutes from './src/routes/ListenerRoutes.js';
 import VotosInternosRoutes from './src/routes/VotosInternosRoutes.js';
+import VotosExternosRoutes from './src/routes/VotosExternosRoutes.js';
 import EventosRoutes from './src/routes/EventoRoutes.js';
 //Middleware
 import errorHandler from './src/middlewares/errorHandler.js';
@@ -38,6 +38,7 @@ app.use('/', DashboardInternaRoutes);
 app.use('/', DashboardExternaRoutes);
 app.use('/', ListenerRoutes);
 app.use('/', VotosInternosRoutes);
+app.use('/', VotosExternosRoutes);
 app.use('/', EventosRoutes);
 app.get('/', (req, res) => {
   res.send('Hello, World!');
@@ -45,7 +46,6 @@ app.get('/', (req, res) => {
 //Manter Middlewares no final da definição das rotas
 // Middleware para tratamento de erros
 app.use(errorHandler);
-
 
 const PORT = process.env.PORT;
 
