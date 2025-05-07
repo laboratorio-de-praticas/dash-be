@@ -40,6 +40,7 @@ app.use('/', ListenerRoutes);
 app.use('/', VotosInternosRoutes);
 app.use('/', VotosExternosRoutes);
 app.use('/', EventosRoutes);
+
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
