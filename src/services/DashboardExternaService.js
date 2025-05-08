@@ -127,5 +127,70 @@ class DashBoardInterna {
     console.log('Dados do Evento Externo Geral obtidos com sucesso!');
     return result;
   }
+  async findProjetoExternoById(projeto) {
+    const query = `
+            SELECT 
+                p.id_projeto,
+                p.titulo AS nome_projeto,
+                p.descricao,
+                p.nome_equipe,
+                p.turma,
+                p.foto_url,
+
+                -- Integrantes
+                (
+                    SELECT STRING_AGG(DISTINCT u.nome, ', ')
+                    FROM "IntegrantesEquipe" ie
+                    JOIN "Alunos" a ON a.id_aluno = ie.aluno_id
+                    JOIN "Usuarios" u ON u.id = a.fk_id_usuario
+                    WHERE ie.projeto_id = p.id_projeto
+                ) AS integrantes,
+
+                -- Categorias
+                (
+                    SELECT STRING_AGG(DISTINCT c.descricao, ', ')
+                    FROM "CategoriasProjetos" cp
+                    JOIN "Categorias" c ON c.id_categoria = cp.fk_id_categoria
+                    WHERE cp.fk_id_projeto = p.id_projeto
+                ) AS categorias,
+
+                -- ODS
+                (
+                    SELECT STRING_AGG(DISTINCT o.descricao, ', ')
+                    FROM "ProjetoODS" po
+                    JOIN "ODS" o ON o.id_ods = po.ods_id
+                    WHERE po.projeto_id = p.id_projeto
+                ) AS ods,
+
+                -- Linhas de extensão
+                (
+                    SELECT STRING_AGG(DISTINCT le.descricao, ', ')
+                    FROM "ProjetoLinhaExtensao" ple
+                    JOIN "LinhaExtensao" le ON le.id_linha = ple.linha_extensao_id
+                    WHERE ple.projeto_id = p.id_projeto
+                ) AS linhas_extensao,
+
+                -- Imagens
+                (
+                    SELECT json_agg(img)
+                    FROM (
+                        SELECT ip.id_imagem, ip.imagem_url
+                        FROM "ImagensProjeto" ip
+                        WHERE ip.projeto_id = p.id_projeto
+                    ) AS img
+                ) AS imagens_projeto
+
+            FROM "Projetos" p
+            WHERE p.id_projeto = $1
+    `;
+    const result = await AppDataSource.query(query, [projeto]);
+    if (!result || result.length === 0) {
+      throw new NotFoundError(
+        `Nenhum evento externo ativo encontrado para o evento ${projeto} .`,
+      );
+    }
+    console.log('Dados do Evento obtidos com sucesso!');
+    return result;
+  }
 }
 export default new DashBoardInterna();
