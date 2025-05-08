@@ -11,4 +11,10 @@ routerExterna.get(
   DashboardExternaController.findDashboardExternaAtivoGeral,
 );
 
+routerExterna.get(
+  '/v1/externo/nuvem-projetos/:projeto',
+  /* authenticateToken, */
+  DashboardExternaController.findProjetoExternoById,
+);
+
 export default routerExterna;
