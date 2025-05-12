@@ -4,6 +4,7 @@
   "description": "Backend para dashboards relacionados as votacoes",
   "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "pg": "^8.4.0",
