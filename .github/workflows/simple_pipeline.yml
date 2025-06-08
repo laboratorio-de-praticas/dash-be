@@ -1,0 +1,48 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  eslint-check:
+    runs-on: ubuntu-latest
+    continue-on-error: true # ⚠️ Não falha o PR se o ESLint tiver erro
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npx eslint . || true # Ignora os erros para não travar o PR
+
+  build-check:
+    runs-on: ubuntu-latest
+    needs: eslint-check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  
+
+      - name: Run Docker Compose
+        uses: adambirds/docker-compose-action@v1.5.0
+        with:
+          compose-file: "./docker-compose.yml"
+          up-flags: "--build"
+          down-flags: "--volumes"
+          test-container: "backend"   
+        env:
+          PORT: 5000
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USERNAME: pipeline
+          DB_PASSWORD: pipeline
+          DB_NAME: test
